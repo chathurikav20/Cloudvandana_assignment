@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Survey Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #3fcfdc;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .gender-label {
+            margin-right: 20px;
+        }
+
+        .checkbox-label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #59ac36;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="reset"] {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Customer Survey Form</h1>
+        <form id="survey-form">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" required>
+
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+                <option value="">Select Country</option>
+                <option value="usa">USA</option>
+                <option value="canada">Canada</option>
+                <option value="uk">UK</option>
+                <!-- Add more countries here -->
+            </select>
+
+            <label>Gender:</label>
+            <label class="checkbox-label">
+                <input type="checkbox" name="gender" value="male"> Male
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" name="gender" value="female"> Female
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" name="gender" value="other"> Other
+            </label>
+
+            <label for="profession">Profession:</label>
+            <input type="text" id="profession" name="profession" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mobile">Mobile Number:</label>
+            <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+
+            <div class="buttons">
+                <button type="submit" onclick="submitForm()">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() {
+            const form = document.getElementById("survey-form");
+            const formData = new FormData(form);
+            const selectedValues = [];
+
+            for (const pair of formData.entries()) {
+                selectedValues.push(pair[0] + ": " + pair[1]);
+            }
+
+            alert("Selected Values:\n\n" + selectedValues.join("\n"));
+            form.reset();
+        }
+    </script>
+</body>
+
+</html>
